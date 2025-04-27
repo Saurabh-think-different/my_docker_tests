@@ -1,9 +1,15 @@
-### Example: buildpacks (Python)
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/GoogleContainerTools/skaffold&cloudshell_open_in_editor=README.md&cloudshell_workspace=examples/buildpacks-python)
+You must run either:
 
-This is an example demonstrating:
+    minikube image load fastapi-ping
+OR
 
-* **building** a Python app built with [Cloud Native Buildpacks](https://buildpacks.io/)
-* **tagging** using the default tagPolicy (`gitCommit`)
-* **deploying** a single container pod using `kubectl`
+    eval $(minikube docker-env)
+    docker build -t fastapi-ping .
+
+Otherwise Kubernetes will always fail to pull your local images to minikube(or just push it to docker hub repo: docker push saurabhdevs/myrepo:latest)
+
+At last run this to go back to regular local docker images:
+
+    eval $(minikube docker-env -u)
+
