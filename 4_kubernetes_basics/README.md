@@ -3,8 +3,8 @@
 kubectl = CLI for interacting with K8s API
 
     kubectl config get-contexts
-    kubectl config current-contexts
-    kubectl config use-contexts [context]
+    kubectl config current-context
+    kubectl config use-context [context]
     kubectl get ns
     kubectl create ns [namespace]
     kubectl delete ns [namespace]
