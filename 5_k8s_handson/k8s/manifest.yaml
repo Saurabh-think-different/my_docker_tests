@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-ping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-ping
+  template:
+    metadata:
+      labels:
+        app: fastapi-ping
+    spec:
+      containers:
+      - name: fastapi-ping
+        image: saurabhdevs/myrepo:latest
+        ports:
+        - containerPort: 8000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-ping-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8000
+    targetPort: 8000
+  selector:
+    app: fastapi-ping
